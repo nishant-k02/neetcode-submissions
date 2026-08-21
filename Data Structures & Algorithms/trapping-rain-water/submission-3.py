@@ -1,0 +1,29 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+
+        n = len(height)
+        left = 0
+        right = n - 1
+        maxWater = 0
+        leftMax = 0
+        rightMax = 0
+
+        while left < right:
+            if height[left] < height[right]:
+                if height[left] >= leftMax:
+                    leftMax = height[left]
+                else:
+                    maxWater += leftMax - height[left] 
+                left += 1
+
+            else:
+                if height[right] >= rightMax:
+                    rightMax = height[right]
+                else:
+                    maxWater += rightMax - height[right]
+                right -= 1
+        return maxWater
+            
+
+
+    
